@@ -27,11 +27,11 @@ function ProjectRow({ project, index }) {
         <span className="h-px w-10 bg-gradient-to-r from-[#dc2626] to-transparent" />
       </div>
 
-      <h3 className="text-2xl font-normal tracking-tight text-white sm:text-3xl">
+      <h3 className="text-2xl font-medium tracking-tight text-white sm:text-4xl">
         {project.title}
       </h3>
 
-      <p className="mt-4 text-[15px] leading-relaxed text-zinc-300 sm:text-base">
+      <p className="mt-4 text-base leading-relaxed text-zinc-300 sm:text-lg">
         {project.blurb}
       </p>
 
@@ -60,9 +60,9 @@ function ProjectRow({ project, index }) {
     <motion.div
       variants={staggerContainer(0.15)}
       {...inViewProps}
-      className="group relative rounded-3xl border border-white/[0.07] bg-white/[0.015] p-6 transition-all duration-500 hover:border-[#dc2626]/40 hover:bg-white/[0.03] hover:shadow-[0_0_50px_-20px_rgba(220,38,38,0.5)] sm:p-8"
+      className="group relative rounded-3xl border border-white/[0.07] bg-white/[0.015] p-6 transition-all duration-500 hover:border-[#dc2626]/40 hover:bg-white/[0.03] hover:shadow-[0_0_60px_-18px_rgba(220,38,38,0.55)] sm:p-10"
     >
-      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
         {panel}
         {body}
       </div>
@@ -72,12 +72,12 @@ function ProjectRow({ project, index }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative mx-auto max-w-6xl px-6 py-24 sm:py-28">
+    <section id="projects" className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20">
       <motion.div variants={staggerContainer()} {...inViewProps}>
         <SectionHeading kicker="Projects" title="Things I've built" />
       </motion.div>
 
-      <div className="mt-4 space-y-8">
+      <div className="mt-6 space-y-6">
         {projects.map((project, index) => (
           <ProjectRow key={project.title} project={project} index={index} />
         ))}

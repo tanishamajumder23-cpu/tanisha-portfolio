@@ -50,7 +50,7 @@ export default function Hero() {
   const nameWords = site.name.split(' ')
 
   return (
-    <section id="top" className="relative mx-auto max-w-6xl px-6 pb-24 pt-32 sm:pt-36 lg:pt-44">
+    <section id="top" className="relative mx-auto max-w-6xl px-6 pb-16 pt-28 sm:pt-32 lg:pt-36">
       {/* socials: top-right on desktop */}
       <div className="mb-10 flex justify-end lg:absolute lg:right-6 lg:top-28 lg:mb-0">
         <Socials />
