@@ -27,9 +27,6 @@ touch any component. Notes:
 - **Your photo (hero)** — drop a square-ish image at `public/me.jpg` (or
   `.png`) and set `photo: '/me.jpg'` in `site` (in `content.js`). Leave it
   `null` to keep the abstract graphic card.
-- **Project screenshots** — drop a PNG at `public/projects/<slug>.png`
-  (slugs: `netrasetu`, `aura`, `truesource`, `echotrace`, `aegis`). It replaces
-  the generated cover automatically.
 
 ## 🚀 Run locally
 
@@ -80,12 +77,8 @@ That's it — the site is static, so no environment variables are required.
 - White headings, muted gray body; big, thin typography for headings.
 - Motion respects `prefers-reduced-motion` and animates only transform/opacity
   for performance.
-
-### Adding project screenshots
-
-Drop a PNG at `public/projects/<slug>.png` (slugs: `netrasetu`, `aura`,
-`truesource`, `echotrace`, `aegis`). It appears automatically; until then each
-card shows a generated dark cover with an icon and the project name.
+- Projects are a clean list; each project's tech stack renders as animated
+  badges with real logos (via Simple Icons) where available.
 
 ## 🗂 Structure
 
