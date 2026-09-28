@@ -2,23 +2,31 @@ import { motion } from 'framer-motion'
 import { technologies } from '../data/content'
 import { staggerContainer, fadeUp, inViewProps } from '../lib/motion'
 import SectionHeading from './SectionHeading'
-import TechIcon from './TechIcon'
+import { TECH_ICONS } from './techIconMap'
 
 function Tile({ tech }) {
+  const Icon = TECH_ICONS[tech.name]
   return (
     <motion.div
       whileHover={{ y: -8, scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-      className="group relative flex w-28 shrink-0 flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300 hover:border-[#dc2626]/50 hover:bg-white/[0.05]"
+      className="group relative flex h-28 w-28 shrink-0 flex-col items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300 hover:border-[#dc2626]/50 hover:bg-white/[0.05]"
     >
       {/* soft crimson glow on hover */}
       <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 shadow-[0_0_30px_-4px_rgba(220,38,38,0.45)] transition-opacity duration-300 group-hover:opacity-100" />
-      <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:scale-110">
-        <TechIcon slug={tech.slug} name={tech.name} />
-      </span>
-      <span className="text-xs font-medium text-zinc-400 transition-colors group-hover:text-white">
-        {tech.name}
-      </span>
+      {Icon ? (
+        <>
+          <Icon className="h-9 w-9 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:scale-110" />
+          <span className="text-xs font-medium text-zinc-400 transition-colors group-hover:text-white">
+            {tech.name}
+          </span>
+        </>
+      ) : (
+        // No brand logo (e.g. Groq) — show the name cleanly as the mark.
+        <span className="text-lg font-light tracking-wide text-zinc-200 transition-colors group-hover:text-white">
+          {tech.name}
+        </span>
+      )}
     </motion.div>
   )
 }
@@ -50,7 +58,7 @@ export default function Technologies() {
       >
         <div className="marquee-track flex w-max animate-marquee gap-5 px-3">
           {loop.map((tech, i) => (
-            <Tile key={`${tech.key}-${i}`} tech={tech} />
+            <Tile key={`${tech.name}-${i}`} tech={tech} />
           ))}
         </div>
       </motion.div>

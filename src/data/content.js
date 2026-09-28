@@ -10,7 +10,7 @@ export const site = {
   tagline: 'Computer Science & Engineering Student',
   accentTagline: 'AI & Full-Stack Developer',
   heroBio:
-    'First-year CSE student who learns by building — across Web, AI, and DSA. I turn ideas into working products, from RAG-based apps to autonomous multi-agent systems.',
+    'Second-year CSE student who learns by building — across Web, AI, and DSA. I turn ideas into working products, from RAG-based apps to autonomous multi-agent systems.',
   // Hero photo: drop a square-ish image at /public/me.jpg (or .png) and set the
   // path here. Leave it as null to keep the abstract graphic card instead.
   photo: null, // e.g. '/me.jpg'
@@ -26,7 +26,7 @@ export const links = {
 
 export const about = {
   paragraph:
-    "I'm a first-year Computer Science & Engineering student at Siddaganga Institute of Technology who enjoys learning by building. I work across Web Development, Artificial Intelligence, and DSA — turning ideas into working products, from RAG-based AI apps to autonomous multi-agent systems. I'm active in tech communities like AI Brewery and DeCoders.",
+    "I'm a second-year Computer Science & Engineering student at Siddaganga Institute of Technology who enjoys learning by building. I work across Web Development, Artificial Intelligence, and DSA — turning ideas into working products, from RAG-based AI apps to autonomous multi-agent systems. I'm active in tech communities like AI Brewery and DeCoders.",
   highlights: [
     { icon: '🎓', label: 'CGPA 9.08' },
     { icon: '🥈', label: '2nd place — Smart India Hackathon 2026 (Internal), Team Matrix' },
@@ -34,19 +34,19 @@ export const about = {
   ],
 }
 
-// Technologies — logos are pulled live from the Simple Icons CDN
-// (https://cdn.simpleicons.org/<slug>) and rendered monochrome/white.
-// `slug` is the Simple Icons slug; if a logo is missing the tile falls back
-// to the name's initial automatically. Add/reorder freely.
+// Technologies — logos come from react-icons (Simple Icons set). Each `name`
+// is matched to a logo component in src/components/techIconMap.js; names with
+// no brand logo (e.g. Groq) render cleanly as text. Add a matching entry to
+// techIconMap.js to give a new technology a logo.
 export const technologies = [
-  { slug: 'mongodb', name: 'MongoDB' },
-  { slug: 'express', name: 'Express' },
-  { slug: 'react', name: 'React' },
-  { slug: 'nodedotjs', name: 'Node.js' },
-  { slug: 'python', name: 'Python' },
-  { slug: 'groq', name: 'Groq' },
-  { slug: 'langchain', name: 'LangChain' },
-  { slug: 'docker', name: 'Docker' },
+  { name: 'MongoDB' },
+  { name: 'Express' },
+  { name: 'React' },
+  { name: 'Node.js' },
+  { name: 'Python' },
+  { name: 'Groq' },
+  { name: 'LangChain' },
+  { name: 'Docker' },
 ]
 
 // Projects — a simple list. Each project's `tags` render as animated badges

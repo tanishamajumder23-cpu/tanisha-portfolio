@@ -17,11 +17,11 @@ touch any component. Notes:
 
 - **Projects** — set `github: null` for team projects with no public repo; the
   GitHub button hides automatically. Set a URL to show it.
-- **Technologies** — each entry's `slug` is a
-  [Simple Icons](https://simpleicons.org) slug; the logo is loaded live from
-  `cdn.simpleicons.org` and rendered white. Add an entry with a valid slug and
-  it just works; if a slug is missing, the tile falls back to the name's
-  initial.
+- **Technologies / tech tags** — logos come from
+  [`react-icons`](https://react-icons.github.io/react-icons/) (Simple Icons
+  set). Map a technology's display name to its `Si*` component in
+  `src/components/techIconMap.js`; names with no brand logo render cleanly as
+  text (no icon).
 - **Resume** — drop a PDF at `public/resume.pdf`. The Resume button appears
   automatically when the file exists and hides when it's absent.
 - **Your photo (hero)** — drop a square-ish image at `public/me.jpg` (or
