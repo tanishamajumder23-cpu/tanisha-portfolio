@@ -10,7 +10,7 @@ export default function SectionHeading({ kicker, title }) {
           {kicker}
         </span>
       )}
-      <h2 className="text-3xl font-extralight tracking-tight text-slate-100 sm:text-4xl md:text-5xl">
+      <h2 className="text-3xl font-extralight tracking-tight text-zinc-100 sm:text-4xl md:text-5xl">
         {title}
       </h2>
     </motion.div>

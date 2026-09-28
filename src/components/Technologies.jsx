@@ -9,14 +9,14 @@ function Tile({ tech }) {
     <motion.div
       whileHover={{ y: -8, scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-      className="group relative flex w-28 shrink-0 flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300 hover:border-accent/50 hover:bg-accent/[0.06]"
+      className="group relative flex w-28 shrink-0 flex-col items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300 hover:border-[#dc2626]/50 hover:bg-white/[0.05]"
     >
-      {/* glow on hover */}
-      <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 shadow-[0_0_30px_-4px_rgba(168,85,247,0.6)] transition-opacity duration-300 group-hover:opacity-100" />
+      {/* soft crimson glow on hover */}
+      <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 shadow-[0_0_30px_-4px_rgba(220,38,38,0.45)] transition-opacity duration-300 group-hover:opacity-100" />
       <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:rotate-6 group-hover:scale-110">
-        <TechIcon name={tech.key} />
+        <TechIcon slug={tech.slug} name={tech.name} />
       </span>
-      <span className="text-xs font-medium text-slate-400 transition-colors group-hover:text-white">
+      <span className="text-xs font-medium text-zinc-400 transition-colors group-hover:text-white">
         {tech.name}
       </span>
     </motion.div>
@@ -37,7 +37,7 @@ export default function Technologies() {
         <div className="flex flex-col items-center">
           <SectionHeading kicker="Technologies" title="My stack — MERN + AI" />
         </div>
-        <motion.p variants={fadeUp} className="mx-auto -mt-6 mb-2 max-w-lg text-sm text-slate-500">
+        <motion.p variants={fadeUp} className="mx-auto -mt-6 mb-2 max-w-lg text-sm text-zinc-500">
           Tools I reach for when turning ideas into working products.
         </motion.p>
       </motion.div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
 
-// A soft purple glow that trails the cursor. Disabled for reduced motion and
+// A soft crimson glow that trails the cursor. Disabled for reduced motion and
 // on touch / coarse-pointer devices where it adds nothing.
 export default function CursorGlow() {
   const reduce = useReducedMotion()
@@ -30,7 +30,7 @@ export default function CursorGlow() {
     <motion.div
       aria-hidden="true"
       style={{ x: sx, y: sy }}
-      className="pointer-events-none fixed left-0 top-0 z-0 h-96 w-96 rounded-full bg-accent/10 blur-[90px]"
+      className="pointer-events-none fixed left-0 top-0 z-0 h-96 w-96 rounded-full bg-[#dc2626]/[0.05] blur-[90px]"
     />
   )
 }

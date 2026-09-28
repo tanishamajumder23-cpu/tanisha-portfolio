@@ -29,7 +29,7 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="#top"
-          className="text-sm font-medium tracking-widest text-slate-200 transition-colors hover:text-white"
+          className="text-sm font-medium tracking-widest text-zinc-200 transition-colors hover:text-white"
         >
           TM<span className="text-accent">.</span>
         </a>
@@ -40,7 +40,7 @@ export default function Nav() {
             <a
               key={item.href}
               href={item.href}
-              className="group relative text-sm text-slate-400 transition-colors hover:text-white"
+              className="group relative text-sm text-zinc-400 transition-colors hover:text-white"
             >
               {item.label}
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
@@ -61,7 +61,7 @@ export default function Nav() {
         {/* mobile toggle */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center text-slate-300 md:hidden"
+          className="flex h-9 w-9 items-center justify-center text-zinc-300 md:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -98,7 +98,7 @@ export default function Nav() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-2 py-3 text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
+              className="rounded-lg px-2 py-3 text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
             >
               {item.label}
             </a>

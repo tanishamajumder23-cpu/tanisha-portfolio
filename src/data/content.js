@@ -31,22 +31,30 @@ export const about = {
   ],
 }
 
-// Technologies — `key` maps to a colored SVG logo in src/components/TechIcon.jsx
+// Technologies — logos are pulled live from the Simple Icons CDN
+// (https://cdn.simpleicons.org/<slug>) and rendered monochrome/white.
+// `slug` is the Simple Icons slug; if a logo is missing the tile falls back
+// to the name's initial automatically. Add/reorder freely.
 export const technologies = [
-  { key: 'mongodb', name: 'MongoDB' },
-  { key: 'express', name: 'Express' },
-  { key: 'react', name: 'React' },
-  { key: 'node', name: 'Node.js' },
-  { key: 'python', name: 'Python' },
-  { key: 'groq', name: 'Groq' },
-  { key: 'langchain', name: 'LangChain' },
-  { key: 'docker', name: 'Docker' },
+  { slug: 'mongodb', name: 'MongoDB' },
+  { slug: 'express', name: 'Express' },
+  { slug: 'react', name: 'React' },
+  { slug: 'nodedotjs', name: 'Node.js' },
+  { slug: 'python', name: 'Python' },
+  { slug: 'groq', name: 'Groq' },
+  { slug: 'langchain', name: 'LangChain' },
+  { slug: 'docker', name: 'Docker' },
 ]
 
 // Projects — set `github` to null for team projects without a public repo.
+// COVER IMAGES: drop a screenshot at public/projects/<slug>.png and it shows
+// automatically; if the file is missing, a generated dark cover (icon + name)
+// is used instead. `icon` picks the concept glyph (see ProjectCover.jsx).
 export const projects = [
   {
     title: 'NetraSetu',
+    slug: 'netrasetu',
+    icon: 'eye',
     blurb:
       'An offline-first retinal teletriage system for Diabetic Retinopathy screening in rural India (Smart India Hackathon 2026, 2nd place). Checks fundus image quality, enhances low-quality images with adaptive contrast, extracts deep features with ResNet-18, and classifies DR across 5 severity levels using an explainable ECOC + RBF-SVM pipeline — routing higher-risk cases for clinical review. Improved Level-4 recall to 86.44%.',
     tags: ['Python', 'Machine Learning', 'Computer Vision', 'ResNet-18', 'Explainable AI'],
@@ -54,6 +62,8 @@ export const projects = [
   },
   {
     title: 'AURA — Retail Product Description Generator',
+    slug: 'aura',
+    icon: 'tag',
     blurb:
       'A GenAI/RAG tool that generates retail product descriptions from structured product attributes (TCS Technology Day, 2nd place).',
     tags: ['GenAI', 'RAG', 'Python', 'LLM'],
@@ -61,6 +71,8 @@ export const projects = [
   },
   {
     title: 'TrueSource (VeriState)',
+    slug: 'truesource',
+    icon: 'shield',
     blurb:
       'AI-powered fact-checking web app using RAG. Extracts claims, retrieves real-time web evidence, and generates sourced verdicts with cards; supports article URLs and image/screenshot fact-checking.',
     tags: ['React', 'Node.js', 'Express', 'Groq', 'Tavily', 'RAG', 'MySQL'],
@@ -68,6 +80,8 @@ export const projects = [
   },
   {
     title: 'EchoTrace',
+    slug: 'echotrace',
+    icon: 'document',
     blurb:
       'Plagiarism detection system with a full NLP pipeline (cleaning, tokenization, stop-word removal, stemming) using TF-IDF + cosine similarity to find and visualize document overlap. Modular architecture.',
     tags: ['Python', 'scikit-learn', 'NLTK', 'NLP', 'TF-IDF'],
@@ -75,6 +89,8 @@ export const projects = [
   },
   {
     title: 'Aegis AutoDev Agency',
+    slug: 'aegis',
+    icon: 'bot',
     blurb:
       'An autonomous multi-agent framework (CrewAI + Llama 3.3) that audits legacy files, plans refactors, and pushes self-healing fixes to GitHub.',
     tags: ['Python', 'CrewAI', 'Llama 3.3', 'Multi-Agent', 'Automation'],

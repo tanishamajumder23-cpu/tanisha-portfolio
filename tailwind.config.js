@@ -4,17 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Pure near-black base + layered charcoal/graphite panels.
         ink: {
-          900: '#08070d',
-          800: '#0c0a14',
-          700: '#12101c',
-          600: '#181525',
+          900: '#0a0a0a',
+          800: '#111111',
+          700: '#161616',
+          600: '#1c1c1c',
         },
+        // Crimson accent — used sparingly on a black base. Black dominates,
+        // red is the punch. DEFAULT = rich crimson, soft = lighter red for
+        // legible text/hover, deep = darker stop for gradients.
         accent: {
-          DEFAULT: '#a855f7',
-          soft: '#c084fc',
-          deep: '#7c3aed',
-          magenta: '#d946ef',
+          DEFAULT: '#dc2626', // red-600 — primary crimson
+          soft: '#f87171', // red-400 — readable red for text/hover
+          deep: '#991b1b', // red-800 — dark gradient stop
         },
       },
       fontFamily: {
