@@ -11,6 +11,9 @@ export const site = {
   accentTagline: 'AI & Full-Stack Developer',
   heroBio:
     'First-year CSE student who learns by building — across Web, AI, and DSA. I turn ideas into working products, from RAG-based apps to autonomous multi-agent systems.',
+  // Hero photo: drop a square-ish image at /public/me.jpg (or .png) and set the
+  // path here. Leave it as null to keep the abstract graphic card instead.
+  photo: null, // e.g. '/me.jpg'
   // Resume: drop a file at /public/resume.pdf and the button appears automatically.
   resumePath: '/resume.pdf',
 }

@@ -24,6 +24,12 @@ touch any component. Notes:
   initial.
 - **Resume** — drop a PDF at `public/resume.pdf`. The Resume button appears
   automatically when the file exists and hides when it's absent.
+- **Your photo (hero)** — drop a square-ish image at `public/me.jpg` (or
+  `.png`) and set `photo: '/me.jpg'` in `site` (in `content.js`). Leave it
+  `null` to keep the abstract graphic card.
+- **Project screenshots** — drop a PNG at `public/projects/<slug>.png`
+  (slugs: `netrasetu`, `aura`, `truesource`, `echotrace`, `aegis`). It replaces
+  the generated cover automatically.
 
 ## 🚀 Run locally
 

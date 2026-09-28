@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
+import { site } from '../data/content'
 
-// Abstract geometric SVG inside a charcoal card with a faint crimson accent.
-// Gently bobs, and tilts toward the cursor (subtle 3D parallax).
-// Swap the <svg> below for an <img> of a photo later — the frame stays.
+// A charcoal card with a faint crimson accent that gently bobs and tilts toward
+// the cursor (subtle 3D parallax). Shows your photo (site.photo) when set,
+// otherwise an abstract geometric graphic. The frame stays the same either way.
 export default function HeroCard() {
   const reduce = useReducedMotion()
   const ref = useRef(null)
@@ -48,11 +49,31 @@ export default function HeroCard() {
 
         <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-white/10 via-[#dc2626]/20 to-white/5 p-[1px] shadow-2xl">
           <div className="relative aspect-square overflow-hidden rounded-[1.7rem] bg-ink-800/80">
-            <AbstractArt />
+            <HeroImage />
           </div>
         </div>
       </motion.div>
     </motion.div>
+  )
+}
+
+// Shows your photo when site.photo is set (and loads); otherwise the abstract
+// graphic. A subtle gradient keeps a photo readable against the dark UI.
+function HeroImage() {
+  const [failed, setFailed] = useState(false)
+
+  if (!site.photo || failed) return <AbstractArt />
+
+  return (
+    <>
+      <img
+        src={site.photo}
+        alt="Tanisha Majumder"
+        onError={() => setFailed(true)}
+        className="h-full w-full object-cover"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+    </>
   )
 }
 
