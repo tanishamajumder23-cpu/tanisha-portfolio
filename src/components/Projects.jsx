@@ -1,75 +1,85 @@
 import { motion } from 'framer-motion'
 import { projects } from '../data/content'
-import { staggerContainer, fadeUp, inViewProps } from '../lib/motion'
+import { staggerContainer, fadeUp, fromLeft, fromRight, inViewProps } from '../lib/motion'
 import SectionHeading from './SectionHeading'
+import ProjectPanel from './ProjectPanel'
 import TechBadge from './TechBadge'
 import { GithubIcon } from './SocialIcons'
 
-// A clean list row: index, title, description, and an animated row of tech
-// badges (real logos where they exist). No cover image.
-function ProjectItem({ project, index }) {
-  return (
-    <motion.article
-      variants={staggerContainer(0.08)}
-      {...inViewProps}
-      className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.015] p-6 transition-colors duration-500 hover:border-[#dc2626]/30 hover:bg-white/[0.03] sm:p-8"
+function ProjectRow({ project, index }) {
+  const flipped = index % 2 === 1
+  const number = String(index + 1).padStart(2, '0')
+
+  const panel = (
+    <motion.div
+      variants={flipped ? fromRight : fromLeft}
+      className={`transition-transform duration-500 group-hover:scale-[1.02] ${flipped ? 'lg:order-2' : ''}`}
     >
-      {/* faint crimson glow on hover */}
-      <div className="pointer-events-none absolute inset-0 -z-10 rounded-2xl bg-[#dc2626]/[0.06] opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+      <ProjectPanel project={project} index={index} />
+    </motion.div>
+  )
 
-      <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
-        {/* index + accent rule */}
-        <motion.div variants={fadeUp} className="flex shrink-0 items-start gap-3 sm:flex-col sm:items-center">
-          <span className="font-mono text-sm text-[#f87171]">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <span className="hidden h-full w-px flex-1 bg-gradient-to-b from-[#dc2626]/40 to-transparent sm:block" />
-        </motion.div>
-
-        <div className="min-w-0 flex-1">
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-between gap-3">
-            <h3 className="text-xl font-light tracking-tight text-zinc-100 transition-colors group-hover:text-white sm:text-2xl">
-              {project.title}
-            </h3>
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs text-zinc-300 transition-all duration-300 hover:border-[#dc2626]/50 hover:text-white"
-              >
-                <GithubIcon className="h-4 w-4" />
-                GitHub
-              </a>
-            )}
-          </motion.div>
-
-          <motion.p variants={fadeUp} className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
-            {project.blurb}
-          </motion.p>
-
-          {/* animated tech-stack badges */}
-          <motion.div variants={staggerContainer(0.06, 0.05)} className="mt-5 flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <TechBadge key={tag} tag={tag} />
-            ))}
-          </motion.div>
-        </div>
+  const body = (
+    <motion.div variants={flipped ? fromLeft : fromRight} className={flipped ? 'lg:order-1' : ''}>
+      {/* crimson number + accent line */}
+      <div className="mb-3 flex items-center gap-3">
+        <span className="font-mono text-sm font-medium text-[#f87171]">{number}</span>
+        <span className="h-px w-10 bg-gradient-to-r from-[#dc2626] to-transparent" />
       </div>
-    </motion.article>
+
+      <h3 className="text-2xl font-normal tracking-tight text-white sm:text-3xl">
+        {project.title}
+      </h3>
+
+      <p className="mt-4 text-[15px] leading-relaxed text-zinc-300 sm:text-base">
+        {project.blurb}
+      </p>
+
+      {/* all tags */}
+      <motion.div variants={staggerContainer(0.05, 0.05)} className="mt-6 flex flex-wrap gap-2">
+        {project.tags.map((tag) => (
+          <TechBadge key={tag} tag={tag} />
+        ))}
+      </motion.div>
+
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm text-zinc-200 transition-all duration-300 hover:border-[#dc2626]/60 hover:bg-[#dc2626]/10 hover:text-white"
+        >
+          <GithubIcon className="h-4 w-4" />
+          View on GitHub
+        </a>
+      )}
+    </motion.div>
+  )
+
+  return (
+    <motion.div
+      variants={staggerContainer(0.15)}
+      {...inViewProps}
+      className="group relative rounded-3xl border border-white/[0.07] bg-white/[0.015] p-6 transition-all duration-500 hover:border-[#dc2626]/40 hover:bg-white/[0.03] hover:shadow-[0_0_50px_-20px_rgba(220,38,38,0.5)] sm:p-8"
+    >
+      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        {panel}
+        {body}
+      </div>
+    </motion.div>
   )
 }
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative mx-auto max-w-4xl px-6 py-24 sm:py-28">
+    <section id="projects" className="relative mx-auto max-w-6xl px-6 py-24 sm:py-28">
       <motion.div variants={staggerContainer()} {...inViewProps}>
         <SectionHeading kicker="Projects" title="Things I've built" />
       </motion.div>
 
-      <div className="mt-4 space-y-5">
+      <div className="mt-4 space-y-8">
         {projects.map((project, index) => (
-          <ProjectItem key={project.title} project={project} index={index} />
+          <ProjectRow key={project.title} project={project} index={index} />
         ))}
       </div>
     </section>
